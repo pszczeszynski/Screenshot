@@ -66,6 +66,8 @@ class Ania {
             }
 
             outputStream.write(currentSending);
+            Thread.sleep(500);
+
             outputStream.flush();
             System.out.println("Flushed: " + System.currentTimeMillis());
 
