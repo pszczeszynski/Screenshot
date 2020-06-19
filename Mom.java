@@ -1,6 +1,5 @@
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
-import java.io.File;
 import java.io.InputStream;
 import java.net.Socket;
 import java.nio.ByteBuffer;
@@ -10,13 +9,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import java.awt.*;
-import java.awt.image.*;
-import java.io.*;
-import javax.imageio.*;
 import javax.swing.*;
 
 public class Mom {
     public static void main(String[] args) throws Exception {
+        // System.out.println(System.getProperty("java.version"));
         Socket socket = new Socket("localhost", 13085);
         InputStream inputStream = socket.getInputStream();
 
