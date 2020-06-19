@@ -13,8 +13,9 @@ import javax.swing.*;
 
 public class Mom {
     public static void main(String[] args) throws Exception {
-        // System.out.println(System.getProperty("java.version"));
-        Socket socket = new Socket("localhost", 13085);
+
+        System.out.println(System.getProperty("java.version") + ", args: " + args[0]);
+        Socket socket = new Socket(args[0], 13085);
         InputStream inputStream = socket.getInputStream();
 
         System.out.println("Reading: " + System.currentTimeMillis());
