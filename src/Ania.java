@@ -23,10 +23,13 @@ class Ania {
     public static void main(String[] args) throws Exception{
         while (true) {
             InitializeSocket();
-            BufferedImage screenShot = GetScreenShot();
+            BufferedImage[] screenShots = GetScreenShot();
             // screenShot = resize(screenShot, screenShot.getHeight()/4, screenShot.getWidth()/4);
-            int packetSize = 60000;
-            SendImage(screenShot, packetSize);
+            int packetSize = 30000;
+            SendInt(screenShots.length);
+            for (BufferedImage screenShot : screenShots) {
+                SendImage(screenShot, packetSize);
+            }
             CloseSocket();
         }
     }
@@ -66,7 +69,7 @@ class Ania {
             }
 
             outputStream.write(currentSending);
-            Thread.sleep(500);
+            Thread.sleep(100);
 
             outputStream.flush();
             System.out.println("Flushed: " + System.currentTimeMillis());
@@ -81,15 +84,19 @@ class Ania {
         outputStream = socket.getOutputStream();
     }
 
-    private static BufferedImage GetScreenShot() throws Exception {
+    private static BufferedImage[] GetScreenShot() throws Exception {
+        GraphicsDevice[] allMonitors = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        BufferedImage[] allImages = new BufferedImage[allMonitors.length];
         Robot robot = new Robot();            
         Rectangle screenRect = new Rectangle(0, 0, 0, 0);
-        for (GraphicsDevice gd : GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()) {
-            screenRect = screenRect.union(gd.getDefaultConfiguration().getBounds());
+        for (int i = 0; i < allMonitors.length; i ++) {
+            screenRect = allMonitors[i].getDefaultConfiguration().getBounds();
+            allImages[i] = robot.createScreenCapture(screenRect);
         }
 
 
-        return robot.createScreenCapture(screenRect);
+
+        return allImages;
     }
 
     /// Resizes an image to the specified dimensions
