@@ -76,6 +76,7 @@ class Ania {
 
             currentStartingIndex += packetSize;
         }
+        
     }
 
     private static void InitializeSocket() throws Exception {
