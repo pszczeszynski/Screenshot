@@ -10,9 +10,7 @@ import javax.imageio.ImageIO;
 
 public class Mom {
     public static void main(String[] args) throws Exception {
-        ServerSocket serverSocket = new ServerSocket(13085);
-        System.out.println("Waiting for info...");
-        Socket socket = serverSocket.accept();
+        Socket socket = new Socket("localhost", 13085);
         InputStream inputStream = socket.getInputStream();
 
         System.out.println("Reading: " + System.currentTimeMillis());
@@ -29,6 +27,6 @@ public class Mom {
         System.out.println("Received " + image.getHeight() + "x" + image.getWidth() + ": " + System.currentTimeMillis());
         ImageIO.write(image, "jpg", new File(System.getProperty("user.dir")));
 
-        serverSocket.close();
+        socket.close();
     }
 }

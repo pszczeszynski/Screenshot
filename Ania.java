@@ -6,13 +6,16 @@ import java.nio.ByteBuffer;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.Rectangle;
+import java.net.ServerSocket;
 
 import javax.imageio.ImageIO;
 
 
 class Ania {
     public static void main(String[] args) throws Exception{
-        Socket socket = new Socket("localhost", 13085);
+        ServerSocket serverSocket = new ServerSocket(13085);
+        Socket socket = serverSocket.accept();
+
         OutputStream outputStream = socket.getOutputStream();
 
         BufferedImage image = GetScreenShot();
@@ -25,10 +28,8 @@ class Ania {
         outputStream.write(byteArrayOutputStream.toByteArray());
         outputStream.flush();
         System.out.println("Flushed: " + System.currentTimeMillis());
-
-        Thread.sleep(1200);
         System.out.println("Closing: " + System.currentTimeMillis());
-        socket.close();
+        serverSocket.close();
     }
 
     private static BufferedImage GetScreenShot() throws Exception {
