@@ -2,11 +2,18 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.ByteBuffer;
-
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
+import java.awt.*;
+import java.awt.image.*;
+import java.io.*;
+import javax.imageio.*;
+import javax.swing.*;
 
 public class Mom {
     public static void main(String[] args) throws Exception {
@@ -25,8 +32,32 @@ public class Mom {
         BufferedImage image = ImageIO.read(new ByteArrayInputStream(imageAr));
 
         System.out.println("Received " + image.getHeight() + "x" + image.getWidth() + ": " + System.currentTimeMillis());
-        ImageIO.write(image, "jpg", new File(System.getProperty("user.dir")));
+        // ImageIO.write(image, "jpg", new File(System.getProperty("user.dir")));
 
         socket.close();
+
+
+        DisplayImage(image);
+    }
+
+    public static void DisplayImage(BufferedImage image) throws Exception
+    {
+        SwingUtilities.invokeLater(new Runnable()
+        {
+            public void run()
+            {
+                JFrame editorFrame = new JFrame("Image Demo");
+                editorFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        
+                ImageIcon imageIcon = new ImageIcon(image);
+                JLabel jLabel = new JLabel();
+                jLabel.setIcon(imageIcon);
+                editorFrame.getContentPane().add(jLabel, BorderLayout.CENTER);
+
+                editorFrame.pack();
+                editorFrame.setLocationRelativeTo(null);
+                editorFrame.setVisible(true);
+            }
+        });
     }
 }
