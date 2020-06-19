@@ -1,0 +1,33 @@
+
+
+Version:	3.12
+CmdLine:	C:\Dev\RandomProjects\ScreencaptureSpyware\Ania.exe --l4j-debug
+WOW64:		yes
+Working dir:	C:\Dev\RandomProjects\ScreencaptureSpyware\.
+Java min ver:	
+Java max ver:	
+Bundled JRE:	C:\Program Files\Java\jdk-14.0.1\bin
+Check launcher:	C:\Program Files\Java\jdk-14.0.1\bin\bin\javaw.exe (not found)
+Error msg:	This application was configured to use a bundled Java Runtime Environment but the runtime is missing or corrupted.
+
+
+Version:	3.12
+CmdLine:	C:\Dev\RandomProjects\ScreencaptureSpyware\Ania.exe --l4j-debug
+WOW64:		yes
+Working dir:	C:\Dev\RandomProjects\ScreencaptureSpyware\.
+Java min ver:	
+Java max ver:	
+Bundled JRE:	C:\Program Files\Java\jdk-14.0.1\bin
+Check launcher:	C:\Program Files\Java\jdk-14.0.1\bin\bin\javaw.exe (not found)
+Error msg:	This application was configured to use a bundled Java Runtime Environment but the runtime is missing or corrupted.
+
+
+Version:	3.12
+CmdLine:	C:\Dev\RandomProjects\ScreencaptureSpyware\Ania.exe --l4j-debug
+WOW64:		yes
+Working dir:	C:\Dev\RandomProjects\ScreencaptureSpyware\.
+Java min ver:	
+Java max ver:	
+Bundled JRE:	..\jre
+Check launcher:	C:\Dev\RandomProjects\ScreencaptureSpyware\..\jre\bin\javaw.exe (not found)
+Error msg:	This application was configured to use a bundled Java Runtime Environment but the runtime is missing or corrupted.
